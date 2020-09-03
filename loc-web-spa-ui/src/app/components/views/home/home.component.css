@@ -1,0 +1,28 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;    
+    width: 99.5%;
+    height: 90%;
+    margin: 0px 5px 5px 0px;
+  }
+
+  mat-drawer {
+    width: 15%;
+    background-color: #3F51B5;
+    color: #FFFFFF;
+  }
+
+  .example-card {
+    max-width: 30%;
+    margin: 10px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
