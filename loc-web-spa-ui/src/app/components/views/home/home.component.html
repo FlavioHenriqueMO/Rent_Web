@@ -14,29 +14,73 @@
 
 
 <mat-drawer-container class="example-container">
-  <mat-drawer mode="side" color="primary" opened>Drawer content</mat-drawer>
+  <mat-drawer mode="side"  opened>Drawer content
+
+
+    <mat-accordion >
+      <mat-expansion-panel hideToggle class="fundo_azul">
+        <mat-expansion-panel-header class="disable_ripple">
+          <mat-panel-title>
+            Opção 1
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-selection-list [multiple]="false">
+          <mat-list-option class="row"><mat-icon>account_circle</mat-icon> Opção 1</mat-list-option>
+          <mat-list-option><mat-icon>home</mat-icon> Opção 2</mat-list-option>
+          <mat-list-option><mat-icon>search</mat-icon> Opção 3</mat-list-option>
+          <mat-list-option><mat-icon>edit</mat-icon> Opção 4</mat-list-option>
+    
+        </mat-selection-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion >
+      <mat-expansion-panel hideToggle class="fundo_azul">
+        <mat-expansion-panel-header class="disable_ripple">
+          <mat-panel-title>
+            Opção 2
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-selection-list [multiple]="false">
+          <mat-list-option><mat-icon>account_circle</mat-icon> Opção 1</mat-list-option>
+          <mat-list-option><mat-icon>home</mat-icon> Opção 2</mat-list-option>
+          <mat-list-option><mat-icon>search</mat-icon> Opção 3</mat-list-option>
+          <mat-list-option><mat-icon>edit</mat-icon> Opção 4</mat-list-option>
+    
+        </mat-selection-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion >
+      <mat-expansion-panel hideToggle class="fundo_azul">
+        <mat-expansion-panel-header class="disable_ripple">
+          <mat-panel-title>
+            Opção 3
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-selection-list [multiple]="false" class="fundo_azul">
+          <mat-list-option><mat-icon>account_circle</mat-icon> Opção 1</mat-list-option>
+          <mat-list-option><mat-icon>home</mat-icon> Opção 2</mat-list-option>
+          <mat-list-option><mat-icon>search</mat-icon> Opção 3</mat-list-option>
+          <mat-list-option><mat-icon>edit</mat-icon> Opção 4</mat-list-option>
+    
+        </mat-selection-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+  </mat-drawer>
   <mat-drawer-content>
 
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
 
+
+    
 
   </mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container> 

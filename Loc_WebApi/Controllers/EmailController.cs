@@ -1,41 +1,47 @@
-using System;
-using System.Reflection.PortableExecutable;
-using System.Threading.Tasks;
-using Loc_WebApi.Data;
+using System.Linq;
+using Loc_WebApi.Data.Interfaces;
+using Loc_WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Loc_WebApi.Controllers
 {
-    [ApiController]
+     [ApiController]
     [Route("api/[controller]")]
     public class EmailController : ControllerBase
     {
-        private readonly IRepository _repo;
-        public EmailController(IRepository repo)
+        private readonly IEmail _repo;
+
+        public EmailController(IEmail repo)
         {
             this._repo = repo;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IQueryable<Emails> Get()
         {
-
             try
             {
-                var result = await this._repo.GetAllEmailAsync(false);
-                return Ok(result);
+                return this._repo.GetAll();
             }
-            catch (Exception ex)
+            catch (System.Exception)
             {
-                return BadRequest($"Erro :( {ex.Message}");
+                
+                throw;
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmailByCtrId(int id)
+        [HttpGet("{contatoId}")]
+        public IQueryable<Emails> GetEmails(int contatoId)
         {
-            var result = await this._repo.GetEmailAsyncByContatoId(id, false);
-            return Ok(result);
+            try
+            {
+                return this._repo.GetByContatoId(contatoId);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

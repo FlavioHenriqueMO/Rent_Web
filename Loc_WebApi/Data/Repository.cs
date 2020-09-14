@@ -1,96 +1,44 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Loc_WebApi.Data.Interfaces;
 using Loc_WebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Loc_WebApi.Data
 {
-    public class Repository : IRepository
+    public class Repository<T> : IRepository<T> where T: class
     {
-        private readonly DataContext _context;
+        protected DataContext _context;
+        protected DbSet<T> dbSet;
         public Repository(DataContext context)
         {
             this._context = context;
-        }
-        public void Add<T>(T entity) where T : class
-        {
-            this._context.Add(entity);
-        }
-        public void Update<T>(T entity) where T : class
-        {
-            this._context.Update(entity);
+            this.dbSet = this._context.Set<T>();
         }
 
-        public void Delete<T>(T entity) where T : class
+        public Repository()
         {
-            this._context.Remove(entity);
         }
 
-        public async Task<bool> SaveChangesAsyng()
+        public T Add(T entity)
         {
-            return (await this._context.SaveChangesAsync()) > 0;
+            throw new System.NotImplementedException();
         }
 
-        // Email
-        public async Task<Emails[]> GetAllEmailAsync(bool includeContato)
+        public T Update(T entity)
         {
-            try
-            {
-
-                IQueryable<Emails> query = this._context.emails;
-                query = query.AsNoTracking().OrderBy(reg => reg.Descricao);
-                return await query.ToArrayAsync();
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            throw new System.NotImplementedException();
         }
 
-        public async Task<Emails[]> GetEmailAsyncByContatoId(int contatoId, bool includeContato)
+        public T Delete(T entity)
         {
-            try
-            {
-
-                IQueryable<Emails> query = this._context.emails
-                    .Where(reg => reg.contatoId == contatoId);
-                query = query.AsNoTracking().OrderBy(reg => reg.Descricao);
-                return await query.ToArrayAsync();
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            throw new System.NotImplementedException();
         }
 
-        // Grupo Cadastro
-        public async Task<grupoCadastro[]> GetAllGrpCadastroAsync()
+        public IQueryable<T> GetAll()
         {
-            try
-            {
-                IQueryable<grupoCadastro> query = this._context.grupoCadastro;
-                return await query.ToArrayAsync();
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public async Task<grupoCadastro[]> GetGrpCadastroAsyncById(int grpId)
-        {
-            try
-            {
-                IQueryable<grupoCadastro> query = this._context.grupoCadastro
-                .Where( reg => reg.grupoCadastroId == grpId );
-                return await query.ToArrayAsync();
-            }
-            catch (System.Exception)
-            {
-                
-                throw;
-            }
+            return this.dbSet.AsNoTracking();
         }
     }
 }

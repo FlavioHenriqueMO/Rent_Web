@@ -50,9 +50,9 @@ namespace Loc_WebApi.Models
         [StringLength(100)]
         public string Longitude { get; set; }
         public bool? Ativo { get; set; }
-        public virtual Contatos Contatos { get; set; }
-        public virtual grupoCadastro grupoCadastro { get; set; }
-        public virtual Locadora Locadora { get; set; }
+        // public virtual Contatos Contatos { get; set; }
+        // public virtual grupoCadastro grupoCadastro { get; set; }
+        // public virtual Locadora Locadora { get; set; }
 
     }
 }

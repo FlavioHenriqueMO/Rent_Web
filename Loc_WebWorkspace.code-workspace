@@ -4,7 +4,7 @@
 			"path": "Loc_WebApi"
 		},
 		{
-			"path": "loc-WebSPA-UI"
+			"path": "loc-web-spa-ui"
 		}
 	],
 	"settings": {}

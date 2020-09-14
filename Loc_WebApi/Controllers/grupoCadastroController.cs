@@ -1,43 +1,49 @@
-using System;
-using System.Threading.Tasks;
-using Loc_WebApi.Data;
+using System.Linq;
+using Loc_WebApi.Data.Interfaces;
+using Loc_WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Loc_WebApi.Controllers
 {
-     [ApiController]
+    [ApiController]
     [Route("api/[controller]")]
-    public class grupoCadastroController: ControllerBase
+    public class GrupoCadastroController : ControllerBase
     {
-        private readonly IRepository _repo;
+        private readonly IGrupoCadastro _repo;
 
-        public grupoCadastroController(IRepository repo)
+        public GrupoCadastroController(IGrupoCadastro repo)
         {
             this._repo = repo;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IQueryable<grupoCadastro> Get()
         {
-
             try
             {
-                var result = await this._repo.GetAllGrpCadastroAsync();
-                return Ok(result);
+                var result = this._repo.GetAll();
+                return result;
+                
             }
-            catch (Exception ex)
+            catch (System.Exception)
             {
-                return BadRequest($"Erro :(( {ex.Message}");
+
+                throw;
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetGrpContratoById(int id)
+        [HttpGet("{grupoCadastroId}")]
+        public IQueryable<grupoCadastro> Get(int grupoCadastroId)
         {
-            var result = await this._repo.GetGrpCadastroAsyncById(id);
-            return Ok(result);
-        }
- 
+            try
+            {
+                return this._repo.GetById(grupoCadastroId);
+            }
+            catch (System.Exception)
+            {
 
+                throw;
+            }
+        }
     }
 }
